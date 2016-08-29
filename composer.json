@@ -1,0 +1,23 @@
+{
+    "name": "thibaud-dauce/mattermost-php",
+    "description": "Mattermost PHP driver to send incoming webhooks",
+    "homepage": "https://github.com/thibaud-dauce/mattermost-php",
+    "version": "1.0.0",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thibaud Dauce",
+            "email": "thibaud@dauce.fr",
+            "homepage": "https://www.formations-laravel.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ThibaudDauce\\Mattermost\\": "src/"
+        }
+    }
+}
