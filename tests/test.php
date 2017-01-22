@@ -30,4 +30,4 @@ $message = (new Message)
             ->imageUrl('http://www.mattermost.org/wp-content/uploads/2016/03/logoHorizontal_WS.png');
     });
 
-$mattermost->send($message, 'https://mattermost.quantic-telecom.net/hooks/hcu8scsuztra5e1apy67nr7hew');
+$mattermost->send($message, 'https://your_mattermost_webhook_url');
