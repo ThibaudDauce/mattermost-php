@@ -51,6 +51,7 @@ class Mattermost {
                 'fields' => $attachment->fields,
                 'image_url' => $attachment->imageUrl,
                 'thumb_url' => $attachment->thumbUrl,
+                'actions' => $attachment->actions,
             ]);
         }, $message->attachments);
     }

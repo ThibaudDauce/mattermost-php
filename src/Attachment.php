@@ -92,6 +92,17 @@ class Attachment {
     public $thumbUrl;
 
     /**
+     * Optional actions that can be made when responding to an incoming attachment. Should be an array that includes:
+     * 'name' string Title of an action button (ex. Verify)
+     * 'integration' array:
+     *      'url' string URL where the action will be sent (ex. https://opt.netis.pl/mattermost/verify-request)
+     *      'context' array: include any parameters that will be sent to the URL (ex. ['text' => 123456]
+     *
+     * @var array
+     */
+    public $actions = [];
+
+    /**
      * @param  string  $fallback
      * @return $this
      */
@@ -263,6 +274,20 @@ class Attachment {
     public function thumbUrl($thumbUrl)
     {
         $this->thumbUrl = $thumbUrl;
+
+        return $this;
+    }
+
+    public function action($action)
+    {
+        $this->actions[] = $action;
+
+        return $this;
+    }
+
+    public function actions($actions)
+    {
+        $this->actions = $actions;
 
         return $this;
     }
