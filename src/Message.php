@@ -4,7 +4,8 @@ namespace ThibaudDauce\Mattermost;
 
 use Closure;
 
-class Message {
+class Message
+{
 
     /**
      * The text of the message.
@@ -111,5 +112,18 @@ class Message {
         $callback($attachment);
 
         return $this;
+    }
+
+    public function toArray()
+    {
+        return array_filter([
+            'text' => $this->text,
+            'channel' => $this->channel,
+            'username' => $this->username,
+            'icon_url' => $this->iconUrl,
+            'attachments' => array_map(function (Attachment $attachment) {
+                return $attachment->toArray();
+            }, $this->attachments),
+        ]);
     }
 }

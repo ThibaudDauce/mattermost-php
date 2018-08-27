@@ -7,11 +7,11 @@ use ThibaudDauce\Mattermost\Mattermost;
 use ThibaudDauce\Mattermost\Message;
 use ThibaudDauce\Mattermost\Attachment;
 
-$mattermost = new Mattermost(new Client);
+$mattermost = new Mattermost(new Client, 'https://your_mattermost_webhook_url');
 
 $message = (new Message)
     ->text('This is a *test*.')
-    ->channel('tests')
+    ->channel('town-square')
     ->username('A Tester')
     ->iconUrl('https://upload.wikimedia.org/wikipedia/fr/f/f6/Phpunit-logo.gif')
     ->attachment(function (Attachment $attachment) {
@@ -38,4 +38,4 @@ $message = (new Message)
             ]);
     });
 
-$mattermost->send($message, 'https://your_mattermost_webhook_url');
+$mattermost->send($message);

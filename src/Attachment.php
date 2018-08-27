@@ -2,7 +2,8 @@
 
 namespace ThibaudDauce\Mattermost;
 
-class Attachment {
+class Attachment
+{
 
     /**
      * A required plain-text summary of the post. This is used in notifications, and in clients that don’t support formatted text (eg IRC).
@@ -290,5 +291,24 @@ class Attachment {
         $this->actions = $actions;
 
         return $this;
+    }
+
+    public function toArray()
+    {
+        return array_filter([
+            'fallback' => $this->fallback,
+            'color' => $this->color,
+            'pretext' => $this->pretext,
+            'text' => $this->text,
+            'author_name' => $this->authorName,
+            'author_link' => $this->authorLink,
+            'author_icon' => $this->authorIcon,
+            'title' => $this->title,
+            'title_link' => $this->titleLink,
+            'fields' => $this->fields,
+            'image_url' => $this->imageUrl,
+            'thumb_url' => $this->thumbUrl,
+            'actions' => $this->actions,
+        ]);
     }
 }
