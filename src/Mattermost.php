@@ -29,6 +29,12 @@ class Mattermost
 
     public function send(Message $message, $webhook = null)
     {
+        if (is_null($webhook) and is_null($this->webhook)) {
+            throw new MattermostException(
+                "No default webhook configured. Please put a webhook URL as a second parameter of the constructor or of the `send` function."
+            );
+        }
+
         if (is_null($webhook)) {
             $webhook = $this->webhook;
         }
