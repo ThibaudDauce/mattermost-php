@@ -4,21 +4,36 @@ namespace ThibaudDauce\Mattermost;
 
 use GuzzleHttp\Client;
 
-class Mattermost {
+class Mattermost
+{
 
     /**
+     * Guzzle HTTP Client
+     *
      * @var Client
      */
     public $mattermost;
 
-    public function __construct(Client $mattermost)
+    /**
+     * Default webhook URL
+     *
+     * @var string
+     */
+    public $webhook;
+
+    public function __construct(Client $mattermost, $webhook = null)
     {
         $this->mattermost = $mattermost;
+        $this->webhook = $webhook;
     }
 
-    public function send(Message $message, $url)
+    public function send(Message $message, $webhook = null)
     {
-        $this->mattermost->post($url, ['json' => array_filter([
+        if (is_null($webhook)) {
+            $webhook = $this->webhook;
+        }
+
+        $this->mattermost->post($webhook, ['json' => array_filter([
             'text' => $message->text,
             'channel' => $message->channel,
             'username' => $message->username,
@@ -37,7 +52,7 @@ class Mattermost {
      */
     protected function attachments(Message $message)
     {
-        return array_map(function(Attachment $attachment) {
+        return array_map(function (Attachment $attachment) {
             return array_filter([
                 'fallback' => $attachment->fallback,
                 'color' => $attachment->color,
