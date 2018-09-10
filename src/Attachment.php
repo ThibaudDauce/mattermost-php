@@ -252,7 +252,11 @@ class Attachment
      */
     public function field($title, $value, $short = true)
     {
-        $this->fields[] = compact('title', 'value', 'short');
+        $this->fields[] = [
+            'title' => (string) $title,
+            'value' => $value,
+            'short' => $short,
+        ];
 
         return $this;
     }
