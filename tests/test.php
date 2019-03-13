@@ -30,11 +30,13 @@ $message = (new Message)
             ->imageUrl('http://www.mattermost.org/wp-content/uploads/2016/03/logoHorizontal_WS.png')
             ->action([
                 'name' => 'Some button text',
+                'integration' => [
                 'url' => 'https://my-post-api.example.org',
                 'context' => [
                     'user_id' => '123',
                     'secret_key' => 'bépo22',
                 ],
+               ]
             ]);
     });
 
