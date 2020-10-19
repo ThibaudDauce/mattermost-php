@@ -4,7 +4,7 @@
     "homepage": "https://github.com/thibaud-dauce/mattermost-php",
     "type": "library",
     "require": {
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^7.2.0"
     },
     "license": "MIT",
     "authors": [
