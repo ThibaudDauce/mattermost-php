@@ -1,6 +1,19 @@
+
 # Mattermost PHP Driver
 
 This driver for Mattermost allows you to send message for [incoming webhooks](https://docs.mattermost.com/developer/webhooks-incoming.html).
+
+
+## Installation 
+
+Install project with composer
+
+```bash 
+  composer require thibaud-dauce/mattermost-php
+```
+    
+
+## Usage/Examples
 
 This is a full example from `tests/test.php`:
 
@@ -45,6 +58,7 @@ $message = (new Message)
                     ],
                 ]
             ]);
+    });
 
 $mattermost->send($message, 'https://your_mattermost_webhook_url');
 ```
